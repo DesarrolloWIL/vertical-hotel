@@ -1,14 +1,18 @@
 /* @odoo-module */
 
-import {TextField} from "@web/views/fields/text/text_field";
+import {Component} from "@odoo/owl";
 import {registry} from "@web/core/registry";
 import {useService} from "@web/core/utils/hooks";
 import {useState} from "@odoo/owl";
-var FormView = require("web.FormView"); // eslint-disable-line no-undef
-var py = window.py;
+import {standardFieldProps} from "@web/views/fields/standard_field_props";
 const {onWillUpdateProps} = owl;
 
-export class MyWidget extends TextField {
+export class RoomReservationWidget extends Component {
+    static template = "RoomSummary";
+    static props = {
+        ...standardFieldProps,
+    };
+
     setup() {
         super.setup();
         console.log(this);
@@ -16,19 +20,30 @@ export class MyWidget extends TextField {
         this.state = useState({
             date_to: false,
             date_from: false,
-            summary_header: py.eval(this.props.record.data.summary_header),
-            room_summary: py.eval(this.props.record.data.room_summary),
+            summary_header: this.parseData(this.props.record.data.summary_header),
+            room_summary: this.parseData(this.props.record.data.room_summary),
         });
 
-        onWillUpdateProps(() => {
-            this.state.summary_header = py.eval(this.props.record.data.summary_header);
-            this.state.room_summary = py.eval(this.props.record.data.room_summary);
-            console.log(FormView.ReinitializeWidgetMixin);
+        onWillUpdateProps((nextProps) => {
+            this.state.summary_header = this.parseData(nextProps.record.data.summary_header);
+            this.state.room_summary = this.parseData(nextProps.record.data.room_summary);
         });
     }
+    
+    parseData(data) {
+        if (!data) return [];
+        try {
+            return JSON.parse(data);
+        } catch (e) {
+            console.error("Error parsing JSON:", e);
+            return [];
+        }
+    }
+    
     resize() {
         return this;
     }
+    
     async load_form(room_id, date) {
         this.actionService.doAction({
             type: "ir.actions.act_window",
@@ -39,12 +54,20 @@ export class MyWidget extends TextField {
                 room_id: room_id,
                 date: date,
                 default_adults: 1,
+                summary_id: this.props.record.resId,
             },
         });
     }
 }
 
-MyWidget.template = "RoomSummary";
-MyWidget.components = {...TextField.components};
-MyWidget.additionalClasses = [...(TextField.additionalClasses || []), "o_field_text"];
-registry.category("fields").add("Room_Reservation", MyWidget);
+export const roomReservationWidget = {
+    component: RoomReservationWidget,
+    supportedTypes: ["text"],
+};
+
+registry.category("fields").add("Room_Reservation", roomReservationWidget);
+
+
+
+
+

@@ -1,6 +1,7 @@
 # Copyright (C) 2024-TODAY Serpent Consulting Services Pvt. Ltd. (<http://www.serpentcs.com>).
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
+import json
 import logging
 from datetime import datetime, timedelta
 
@@ -287,6 +288,6 @@ class RoomReservationSummary(models.Model):
                 room_detail.update({"value": room_list_stats})
                 all_room_detail.append(room_detail)
             main_header.append({"header": summary_header_list})
-            self.summary_header = str(main_header)
-            self.room_summary = str(all_room_detail)
+            self.summary_header = json.dumps(main_header)
+            self.room_summary = json.dumps(all_room_detail)
         return res

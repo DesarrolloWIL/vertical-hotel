@@ -332,7 +332,7 @@
                     <separator string="Room Reservation Summary" colspan="4" />
                 </header>
                 <sheet>
-                    <group colspan="4" col="4">
+                    <group col="1">
                         <div>
                             <label for="date_from" string="Summary Period" />
                             <field name="date_from" class="oe_inline" />

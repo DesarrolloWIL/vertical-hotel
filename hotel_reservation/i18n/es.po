@@ -277,19 +277,19 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.report_checkout_qweb
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.report_room_reservation_qweb
 msgid "<strong>#No</strong>"
-msgstr ""
+msgstr "<strong>N.º</strong>"
 
 #. module: hotel_reservation
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.report_checkin_qweb
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.report_room_reservation_qweb
 msgid "<strong>Check-In Date</strong>"
-msgstr ""
+msgstr "<strong>Fecha de Check-In</strong>"
 
 #. module: hotel_reservation
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.report_checkout_qweb
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.report_room_reservation_qweb
 msgid "<strong>Check-Out Date</strong>"
-msgstr ""
+msgstr "<strong>Fecha de Check-Out</strong>"
 
 #. module: hotel_reservation
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.report_checkin_qweb
@@ -297,38 +297,37 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.report_maxroom_qweb
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.report_room_reservation_qweb
 msgid "<strong>From:</strong>"
-msgstr ""
+msgstr "<strong>Desde:</strong>"
 
 #. module: hotel_reservation
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.report_checkin_qweb
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.report_checkout_qweb
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.report_room_reservation_qweb
 msgid "<strong>Guest Name</strong>"
-msgstr ""
+msgstr "<strong>Nombre del Huésped</strong>"
 
 #. module: hotel_reservation
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.report_maxroom_qweb
-#, fuzzy
 msgid "<strong>No of Times used</strong>"
-msgstr "Número de veces usado"
+msgstr "<strong>Número de veces usado</strong>"
 
 #. module: hotel_reservation
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.report_room_reservation_qweb
 msgid "<strong>Room Details</strong>"
-msgstr ""
+msgstr "<strong>Detalles de la Habitación</strong>"
 
 #. module: hotel_reservation
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.report_checkin_qweb
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.report_checkout_qweb
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.report_maxroom_qweb
 msgid "<strong>Room No</strong>"
-msgstr ""
+msgstr "<strong>N.º de Habitación</strong>"
 
 #. module: hotel_reservation
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.report_checkin_qweb
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.report_checkout_qweb
 msgid "<strong>Room Type</strong>"
-msgstr ""
+msgstr "<strong>Tipo de Habitación</strong>"
 
 #. module: hotel_reservation
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.report_checkin_qweb
@@ -336,30 +335,27 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.report_maxroom_qweb
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.report_room_reservation_qweb
 msgid "<strong>To:</strong>"
-msgstr ""
+msgstr "<strong>Hasta:</strong>"
 
 #. module: hotel_reservation
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.report_checkin_qweb
-#, fuzzy
 msgid "<u>Check-In Guest List</u>"
-msgstr "Lista de comprobación de salidas"
+msgstr "<u>Lista de Check-In de Huéspedes</u>"
 
 #. module: hotel_reservation
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.report_checkout_qweb
-#, fuzzy
 msgid "<u>Check-Out Guest List</u>"
-msgstr "Lista de comprobación de salidas"
+msgstr "<u>Lista de Check-Out de Huéspedes</u>"
 
 #. module: hotel_reservation
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.report_room_reservation_qweb
-#, fuzzy
 msgid "<u>Reservation List</u>"
 msgstr "Lista de reservas"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__message_needaction
 msgid "Action Needed"
-msgstr ""
+msgstr "Acción Requerida"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__adults
@@ -371,18 +367,17 @@ msgstr "Adultos"
 #: code:addons/hotel_reservation/models/hotel_reservation.py:0
 #, python-format
 msgid "Adults must be more than 0"
-msgstr ""
+msgstr "Los adultos deben ser más de 0"
 
 #. module: hotel_reservation
 #: model:ir.model,name:hotel_reservation.model_hotel_reservation_wizard
-#, fuzzy
 msgid "Allow to generate a reservation"
 msgstr "Todas las reservas realizadas"
 
 #. module: hotel_reservation
 #: model:ir.model,name:hotel_reservation.model_wizard_make_folio
 msgid "Allow to generate the folio"
-msgstr ""
+msgstr "Permite generar el folio"
 
 #. module: hotel_reservation
 #: model:ir.model.fields.selection,name:hotel_reservation.selection__hotel_room_reservation_line__state__assigned
@@ -392,23 +387,23 @@ msgstr "Assigned"
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__message_attachment_count
 msgid "Attachment Count"
-msgstr ""
+msgstr "Cantidad de Archivos Adjuntos"
 
 #. module: hotel_reservation
 #: model:ir.model,name:hotel_reservation.model_report_hotel_reservation_report_checkin_qweb
 msgid "Auxiliar to get the check in report"
-msgstr ""
+msgstr "Auxiliar para obtener el reporte de check-in"
 
 #. module: hotel_reservation
 #: model:ir.model,name:hotel_reservation.model_report_hotel_reservation_report_checkout_qweb
 msgid "Auxiliar to get the check out report"
-msgstr ""
+msgstr "Auxiliar para obtener el reporte de check-out"
 
 #. module: hotel_reservation
 #: model:ir.model,name:hotel_reservation.model_report_hotel_reservation_report_maxroom_qweb
 #: model:ir.model,name:hotel_reservation.model_report_hotel_reservation_report_room_reservation_qweb
 msgid "Auxiliar to get the room report"
-msgstr ""
+msgstr "Auxiliar para obtener el reporte de habitación"
 
 #. module: hotel_reservation
 #: code:addons/hotel_reservation/models/hotel_reservation.py:0
@@ -417,7 +412,7 @@ msgid ""
 "Before choosing a room,\n"
 " You have to select a Check in date or a Check out  date in the reservation "
 "form."
-msgstr ""
+msgstr "Antes de elegir una habitación,\n Debe seleccionar una fecha de Check-in o una fecha de Check-out en el formulario de reserva."
 
 #. module: hotel_reservation
 #: model:ir.model.fields.selection,name:hotel_reservation.selection__hotel_reservation__state__cancel
@@ -430,78 +425,72 @@ msgstr "Cancelar"
 
 #. module: hotel_reservation
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.view_hotel_reservation_form
-#, fuzzy
 msgid "Cancel Reservation"
 msgstr "Todas las reservas"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_quick_room_reservation__check_in
-#, fuzzy
 msgid "Check In"
-msgstr "Lista de facturaciones"
+msgstr "Check-In"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_room_reservation_line__check_in
-#, fuzzy
 msgid "Check In Date"
-msgstr "Fecha de entrada"
+msgstr "Fecha de Check-In"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_quick_room_reservation__check_out
-#, fuzzy
 msgid "Check Out"
-msgstr "Lista de salidas"
+msgstr "Check-Out"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_room_reservation_line__check_out
-#, fuzzy
 msgid "Check Out Date"
-msgstr "Fecha de salida"
+msgstr "Fecha de Check-Out"
 
 #. module: hotel_reservation
 #: code:addons/hotel_reservation/models/hotel_reservation.py:0
 #, python-format
 msgid "Check-in date should be greater than the current date."
-msgstr ""
+msgstr "La fecha de check-in debe ser posterior a la fecha actual."
 
 #. module: hotel_reservation
 #: code:addons/hotel_reservation/models/hotel_reservation.py:0
 #, python-format
 msgid "Check-out date should be greater than Check-in date."
-msgstr ""
+msgstr "La fecha de check-out debe ser posterior a la fecha de check-in."
 
 #. module: hotel_reservation
 #: model:ir.actions.report,name:hotel_reservation.hotel_checkin_details
-#, fuzzy
 msgid "CheckIn Detail"
-msgstr "Detalles de salida"
+msgstr "Detalles de Check-In"
 
 #. module: hotel_reservation
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.hotel_reservation_wizard_form_view
 msgid "CheckIn List"
-msgstr "Lista de facturaciones"
+msgstr "Lista de Check-In"
 
 #. module: hotel_reservation
 #: model:ir.actions.report,name:hotel_reservation.hotel_checkout_details
 msgid "CheckOut Detail"
-msgstr "Detalles de salida"
+msgstr "Detalles de Check-Out"
 
 #. module: hotel_reservation
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.hotel_reservation_wizard_form_view
 msgid "CheckOut List"
-msgstr "Lista de salidas"
+msgstr "Lista de Check-Out"
 
 #. module: hotel_reservation
 #: code:addons/hotel_reservation/models/hotel_quick_reservation.py:0
 #: code:addons/hotel_reservation/models/hotel_room.py:0
 #, python-format
 msgid "Checkout date should be greater than Checkin date."
-msgstr ""
+msgstr "La fecha de check-out debe ser posterior a la fecha de check-in."
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__children
 msgid "Children"
-msgstr "Hijos"
+msgstr "Niños"
 
 #. module: hotel_reservation
 #: model:ir.model.fields.selection,name:hotel_reservation.selection__hotel_reservation__state__confirm
@@ -514,7 +503,7 @@ msgstr "Confirmar"
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.make_folio_wizard_form_view
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.view_hotel_reservation_form
 msgid "Create Folio"
-msgstr "Create detalle de servicios ofrecidos"
+msgstr "Crear Folio"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__create_uid
@@ -524,9 +513,8 @@ msgstr "Create detalle de servicios ofrecidos"
 #: model:ir.model.fields,field_description:hotel_reservation.field_quick_room_reservation__create_uid
 #: model:ir.model.fields,field_description:hotel_reservation.field_room_reservation_summary__create_uid
 #: model:ir.model.fields,field_description:hotel_reservation.field_wizard_make_folio__create_uid
-#, fuzzy
 msgid "Created by"
-msgstr "Create detalle de servicios ofrecidos"
+msgstr "Creado por"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__create_date
@@ -536,53 +524,49 @@ msgstr "Create detalle de servicios ofrecidos"
 #: model:ir.model.fields,field_description:hotel_reservation.field_quick_room_reservation__create_date
 #: model:ir.model.fields,field_description:hotel_reservation.field_room_reservation_summary__create_date
 #: model:ir.model.fields,field_description:hotel_reservation.field_wizard_make_folio__create_date
-#, fuzzy
 msgid "Created on"
-msgstr "Create detalle de servicios ofrecidos"
+msgstr "Creado el"
 
 #. module: hotel_reservation
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.hotel_calendar_view
 msgid "Current Reservation"
-msgstr "Reserva actual"
+msgstr "Reserva Actual"
 
 #. module: hotel_reservation
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.view_hotel_reservation_search
-#, fuzzy
 msgid "Current Reservations"
-msgstr "Reserva actual"
+msgstr "Reservas Actuales"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_quick_room_reservation__partner_id
 msgid "Customer"
-msgstr "Customer"
+msgstr "Cliente"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_room_reservation_summary__date_from
 msgid "Date From"
-msgstr "Date From"
+msgstr "Fecha Desde"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__date_order
 msgid "Date Ordered"
-msgstr "Fecha de pedido"
+msgstr "Fecha de Pedido"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_room_reservation_summary__date_to
 msgid "Date To"
-msgstr "Date To"
+msgstr "Fecha Hasta"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__partner_shipping_id
 #: model:ir.model.fields,field_description:hotel_reservation.field_quick_room_reservation__partner_shipping_id
-#, fuzzy
 msgid "Delivery Address"
-msgstr "Dirección de factura"
+msgstr "Dirección de Entrega"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,help:hotel_reservation.field_hotel_reservation__partner_shipping_id
-#, fuzzy
 msgid "Delivery addressfor current reservation. "
-msgstr "Delivery address for current reservation. "
+msgstr "Dirección de entrega para la reservación actual."
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_folio__display_name
@@ -600,82 +584,81 @@ msgstr "Delivery address for current reservation. "
 #: model:ir.model.fields,field_description:hotel_reservation.field_room_reservation_summary__display_name
 #: model:ir.model.fields,field_description:hotel_reservation.field_wizard_make_folio__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Nombre a Mostrar"
 
 #. module: hotel_reservation
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.make_folio_wizard_form_view
 msgid "Do you really want to create the Folio ?"
-msgstr "¿Deseas realmente crear un detalle de los servicios ofrecidos?"
+msgstr "¿Realmente desea crear el Folio?"
 
 #. module: hotel_reservation
 #: model:ir.model.fields.selection,name:hotel_reservation.selection__hotel_reservation__state__done
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.view_hotel_reservation_search
 msgid "Done"
-msgstr "Realizado"
+msgstr "Hecho"
 
 #. module: hotel_reservation
 #: model:ir.model.fields.selection,name:hotel_reservation.selection__hotel_reservation__state__draft
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.view_hotel_reservation_search
 msgid "Draft"
-msgstr "Reserva borrador"
+msgstr "Borrador"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation_wizard__date_end
 msgid "End Date"
-msgstr "Fecha fin"
+msgstr "Fecha de Fin"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__checkin
 msgid "Expected-Date-Arrival"
-msgstr "Fecha-Llegada-Prevista"
+msgstr "Fecha Estimada de Llegada"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__checkout
 msgid "Expected-Date-Departure"
-msgstr "Fecha-Salida-Prevista"
+msgstr "Fecha Estimada de Salida"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__folio_id
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.view_hotel_reservation_form
 msgid "Folio"
-msgstr "Detalles de los servicios ofrecidos"
+msgstr "Folio"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__message_follower_ids
 msgid "Followers"
-msgstr ""
+msgstr "Seguidores"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__message_channel_ids
 msgid "Followers (Channels)"
-msgstr ""
+msgstr "Seguidores (Canales)"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__message_partner_ids
 msgid "Followers (Partners)"
-msgstr ""
+msgstr "Seguidores (Contactos)"
 
 #. module: hotel_reservation
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.view_hotel_reservation_search
-#, fuzzy
 msgid "Group By"
-msgstr "Group By..."
+msgstr "Agrupar Por"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_wizard_make_folio__grouped
 msgid "Group the Folios"
-msgstr "Grupo de detalles de los servicios ofrecidos"
+msgstr "Agrupar los Folios"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__partner_id
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.view_hotel_reservation_search
 msgid "Guest Name"
-msgstr "Nombre del huesped"
+msgstr "Nombre del Huésped"
 
 #. module: hotel_reservation
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.view_hotel_reservation_form
 msgid "History"
-msgstr "History"
+msgstr "Historial"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__company_id
@@ -686,25 +669,23 @@ msgstr "Hotel"
 #. module: hotel_reservation
 #: model:ir.model,name:hotel_reservation.model_hotel_folio_line
 msgid "Hotel Folio Line"
-msgstr ""
+msgstr "Línea de Folio de Hotel"
 
 #. module: hotel_reservation
 #: model:mail.template,subject:hotel_reservation.email_template_hotel_reservation
-#, fuzzy
 msgid "Hotel Reservation Detail"
-msgstr "Detalle de reserva"
+msgstr "Detalle de Reserva de Hotel"
 
 #. module: hotel_reservation
 #: model:mail.template,subject:hotel_reservation.mail_template_reservation_reminder_24hrs
-#, fuzzy
 msgid "Hotel Reservation Reminder"
-msgstr "Informe de reserva de hotel"
+msgstr "Recordatorio de Reserva de Hotel"
 
 #. module: hotel_reservation
 #: model:ir.actions.act_window,name:hotel_reservation.action_hotel_reservation_wizard
 #: model:ir.ui.menu,name:hotel_reservation.wizard_res_menu
 msgid "Hotel Reservation Report"
-msgstr "Informe de reserva de hotel"
+msgstr "Reporte de Reserva de Hotel"
 
 #. module: hotel_reservation
 #: model:ir.actions.server,name:hotel_reservation.Guest_reservation_reminder_24hrs_ir_actions_server
@@ -714,24 +695,23 @@ msgid ""
 "Hotel Reservation: Booking Reminder before 24 Hours\n"
 "        "
 msgstr ""
+"Reserva de Hotel: Recordatorio de Reserva 24 Horas Antes\n"
+"        "
 
 #. module: hotel_reservation
 #: model:ir.model,name:hotel_reservation.model_hotel_room
-#, fuzzy
 msgid "Hotel Room"
-msgstr "Hotel"
+msgstr "Habitación de Hotel"
 
 #. module: hotel_reservation
 #: model:ir.model,name:hotel_reservation.model_hotel_room_reservation_line
-#, fuzzy
 msgid "Hotel Room Reservation"
-msgstr "Informe de reserva de hotel"
+msgstr "Reserva de Habitación de Hotel"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,help:hotel_reservation.field_hotel_reservation__reservation_line
-#, fuzzy
 msgid "Hotel room reservation details."
-msgstr "Informe de reserva de hotel"
+msgstr "Detalles de reservación de habitación de hotel."
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_folio__id
@@ -749,36 +729,35 @@ msgstr "Informe de reserva de hotel"
 #: model:ir.model.fields,field_description:hotel_reservation.field_room_reservation_summary__id
 #: model:ir.model.fields,field_description:hotel_reservation.field_wizard_make_folio__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,help:hotel_reservation.field_hotel_reservation__message_needaction
 #: model:ir.model.fields,help:hotel_reservation.field_hotel_reservation__message_unread
 msgid "If checked, new messages require your attention."
-msgstr ""
+msgstr "Si está marcado, los nuevos mensajes requieren su atención."
 
 #. module: hotel_reservation
 #: model:ir.model.fields,help:hotel_reservation.field_hotel_reservation__message_has_error
 #: model:ir.model.fields,help:hotel_reservation.field_hotel_reservation__message_has_sms_error
 msgid "If checked, some messages have a delivery error."
-msgstr ""
+msgstr "Si está marcado, algunos mensajes tienen un error de entrega."
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__partner_invoice_id
 #: model:ir.model.fields,field_description:hotel_reservation.field_quick_room_reservation__partner_invoice_id
 msgid "Invoice Address"
-msgstr "Dirección de factura"
+msgstr "Dirección de Facturación"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,help:hotel_reservation.field_hotel_reservation__partner_invoice_id
-#, fuzzy
 msgid "Invoice address for current reservation."
-msgstr "Invoice address for current reservation. "
+msgstr "Dirección de facturación para la reservación actual."
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__message_is_follower
 msgid "Is Follower"
-msgstr ""
+msgstr "Es Seguidor"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_folio____last_update
@@ -796,7 +775,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:hotel_reservation.field_room_reservation_summary____last_update
 #: model:ir.model.fields,field_description:hotel_reservation.field_wizard_make_folio____last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Última Modificación el"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__write_uid
@@ -807,7 +786,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:hotel_reservation.field_room_reservation_summary__write_uid
 #: model:ir.model.fields,field_description:hotel_reservation.field_wizard_make_folio__write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "Última Actualización por"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__write_date
@@ -818,138 +797,131 @@ msgstr ""
 #: model:ir.model.fields,field_description:hotel_reservation.field_room_reservation_summary__write_date
 #: model:ir.model.fields,field_description:hotel_reservation.field_wizard_make_folio__write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "Última Actualización el"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation_line__line_id
 msgid "Line"
-msgstr ""
+msgstr "Línea"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,help:hotel_reservation.field_hotel_reservation__adults
 msgid "List of adults there in guest list. "
-msgstr "List of adults there in guest list. "
+msgstr "Lista de adultos en la lista de huéspedes."
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__message_main_attachment_id
 msgid "Main Attachment"
-msgstr ""
+msgstr "Archivo Adjunto Principal"
 
 #. module: hotel_reservation
 #: model:ir.actions.act_window,name:hotel_reservation.act_make_folio
 msgid "Make Folios"
-msgstr "Make Folios"
+msgstr "Crear Folios"
 
 #. module: hotel_reservation
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.report_maxroom_qweb
 msgid "Max Room Used List"
-msgstr ""
+msgstr "Lista de Habitaciones Más Utilizadas"
 
 #. module: hotel_reservation
 #: model:ir.actions.report,name:hotel_reservation.hotel_maxroom_details
-#, fuzzy
 msgid "MaxRoom Detail"
-msgstr "Max Room Detail"
+msgstr "Detalle de Habitación Más Utilizada"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__message_has_error
 msgid "Message Delivery error"
-msgstr ""
+msgstr "Error de Entrega de Mensaje"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__message_ids
 msgid "Messages"
-msgstr ""
+msgstr "Mensajes"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation_line__name
 msgid "Name"
-msgstr "Name"
+msgstr "Nombre"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__no_of_folio
-#, fuzzy
 msgid "No. Folio"
-msgstr "Detalles de los servicios ofrecidos"
+msgstr "N.º de Folio"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__message_needaction_counter
 msgid "Number of Actions"
-msgstr ""
+msgstr "Número de Acciones"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,help:hotel_reservation.field_hotel_reservation__children
-#, fuzzy
 msgid "Number of children there in guest list."
 msgstr "Number of children there in guest list. "
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__message_has_error_counter
 msgid "Number of errors"
-msgstr ""
+msgstr "Número de errores"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,help:hotel_reservation.field_hotel_reservation__message_needaction_counter
 msgid "Number of messages which requires an action"
-msgstr ""
+msgstr "Número de mensajes que requieren una acción"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,help:hotel_reservation.field_hotel_reservation__message_has_error_counter
 msgid "Number of messages with delivery error"
-msgstr ""
+msgstr "Número de mensajes con error de entrega"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,help:hotel_reservation.field_hotel_reservation__message_unread_counter
 msgid "Number of unread messages"
-msgstr ""
+msgstr "Número de mensajes no leídos"
 
 #. module: hotel_reservation
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.view_hotel_reservation_search
-#, fuzzy
 msgid "Order By Month"
-msgstr "Contacto"
+msgstr "Ordenar Por Mes"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__partner_order_id
 #: model:ir.model.fields,field_description:hotel_reservation.field_quick_room_reservation__partner_order_id
 msgid "Ordering Contact"
-msgstr "Contacto"
+msgstr "Contacto de Pedido"
 
 #. module: hotel_reservation
 #: code:addons/hotel_reservation/models/hotel_room.py:0
-#, fuzzy, python-format
-msgid 'Please Check Rooms Status for', %s
-msgstr "Informe de reserva de hotel"
+#, python-format
+msgid "Please Check Rooms Status for %s"
+msgstr "Por favor, verifique el estado de las habitaciones para %s"
 
 #. module: hotel_reservation
 #: code:addons/hotel_reservation/models/hotel_reservation.py:0
-#, fuzzy, python-format
+#, python-format
 msgid "Please Select Rooms For Reservation."
-msgstr "Informe de reserva de hotel"
+msgstr "Por favor, seleccione habitaciones para la reservación."
 
 #. module: hotel_reservation
 #: model:ir.model.fields,help:hotel_reservation.field_hotel_reservation__pricelist_id
-#, fuzzy
 msgid "Pricelist for current reservation."
-msgstr "Reserva actual"
+msgstr "Lista de precios para la reservación actual."
 
 #. module: hotel_reservation
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.quick_room_reservation_form_view
-#, fuzzy
 msgid "Quick Reservation"
-msgstr " Reserva"
+msgstr "Reserva Rápida"
 
 #. module: hotel_reservation
 #: model:ir.model,name:hotel_reservation.model_quick_room_reservation
-#, fuzzy
 msgid "Quick Room Reservation"
-msgstr " Reserva"
+msgstr "Reserva Rápida de Habitación"
 
 #. module: hotel_reservation
 #: code:addons/hotel_reservation/models/hotel_room.py:0
 #, python-format
 msgid "Reconcile Write-Off"
-msgstr ""
+msgstr "Conciliar Cancelación"
 
 #. module: hotel_reservation
 #: model:ir.model,name:hotel_reservation.model_hotel_reservation
@@ -966,55 +938,50 @@ msgstr "Reserva"
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__reservation_line
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.view_hotel_reservation_form
 msgid "Reservation Line"
-msgstr "Línea de reserva"
+msgstr "Línea de Reserva"
 
 #. module: hotel_reservation
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.hotel_reservation_wizard_form_view
 msgid "Reservation List"
-msgstr "Lista de reservas"
+msgstr "Lista de Reservas"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__reservation_no
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.view_hotel_reservation_form
 msgid "Reservation No"
-msgstr "Número de reserva"
+msgstr "N.º de Reserva"
 
 #. module: hotel_reservation
 #: model:ir.actions.act_window,name:hotel_reservation.action_hotel_reservation_summary
 #: model:ir.model.fields,field_description:hotel_reservation.field_room_reservation_summary__name
 #: model:ir.ui.menu,name:hotel_reservation.menu_action_hotel_reservation_summary
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.room_reservation_summary_form_view
-#, fuzzy
 msgid "Reservation Summary"
-msgstr "Reserva"
+msgstr "Resumen de Reserva"
 
 #. module: hotel_reservation
 #: model:ir.actions.act_window,name:hotel_reservation.action_hotel_reservation_tree_all
 #: model:ir.ui.menu,name:hotel_reservation.menu_action_hotel_reservation_tree_all
 #: model:ir.ui.menu,name:hotel_reservation.menu_hotel_reservation
-#, fuzzy
 msgid "Reservations"
-msgstr "Reserva"
+msgstr "Reservas"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation_line__reserve
-#, fuzzy
 msgid "Reserve"
-msgstr "Reserva"
+msgstr "Reservar"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_quick_room_reservation__room_id
-#, fuzzy
 msgid "Room"
-msgstr "Habitación No"
+msgstr "Habitación"
 
 #. module: hotel_reservation
 #: model:ir.actions.server,name:hotel_reservation.room_analytic_cron_ir_actions_server
 #: model:ir.cron,cron_name:hotel_reservation.room_analytic_cron
 #: model:ir.cron,name:hotel_reservation.room_analytic_cron
-#, fuzzy
 msgid "Room Analysis"
-msgstr "Tipo de habitación"
+msgstr "Análisis de Habitación"
 
 #. module: hotel_reservation
 #: code:addons/hotel_reservation/models/hotel_reservation.py:0
@@ -1023,131 +990,121 @@ msgid ""
 "Room Capacity Exceeded \n"
 " Please Select Rooms According to Members Accomodation."
 msgstr ""
+"Capacidad de Habitación Excedida \n"
+" Por favor, seleccione habitaciones según el número de personas."
 
 #. module: hotel_reservation
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.view_hotel_reservation_form
-#, fuzzy
 msgid "Room Number"
-msgstr "Habitación No"
+msgstr "Número de Habitación"
 
 #. module: hotel_reservation
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.view_hotel_room_form_inherited
-#, fuzzy
 msgid "Room Reservation"
-msgstr " Reserva"
+msgstr "Reserva de Habitación"
 
 #. module: hotel_reservation
 #: model:ir.actions.report,name:hotel_reservation.hotel_roomres_details
-#, fuzzy
 msgid "Room Reservation Detail"
-msgstr "Detalle de reserva"
+msgstr "Detalle de Reserva de Habitación"
 
 #. module: hotel_reservation
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.view_hotel_room_form_inherited
-#, fuzzy
 msgid "Room Reservation Line"
-msgstr "Línea de reserva"
+msgstr "Línea de Reserva de Habitación"
 
 #. module: hotel_reservation
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.room_reservation_summary_form_view
-#, fuzzy
 msgid "Room Reservation Summary"
-msgstr " Reserva"
+msgstr "Resumen de Reserva de Habitación"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_room__room_reservation_line_ids
-#, fuzzy
 msgid "Room Reserve Line"
-msgstr "Línea de reserva"
+msgstr "Línea de Reserva de Habitación"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_room_reservation_line__state
 msgid "Room Status"
-msgstr "Room Status"
+msgstr "Estado de Habitación"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_room_reservation_summary__room_summary
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.room_reservation_summary_form_view
 msgid "Room Summary"
-msgstr "Room Summary"
+msgstr "Resumen de Habitación"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation_line__categ_id
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.view_hotel_reservation_form
 msgid "Room Type"
-msgstr "Tipo de habitación"
+msgstr "Tipo de Habitación"
 
 #. module: hotel_reservation
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.hotel_reservation_wizard_form_view
 msgid "Room Used Maximum"
-msgstr "Room Used Maximum"
+msgstr "Habitación Más Utilizada"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_room_reservation_line__room_id
-#, fuzzy
 msgid "Room id"
-msgstr "Habitación No"
+msgstr "ID de Habitación"
 
 #. module: hotel_reservation
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.view_hotel_room_form_inherited
-#, fuzzy
 msgid "Room line"
-msgstr "Tipo de habitación"
+msgstr "Línea de Habitación"
 
 #. module: hotel_reservation
 #: model:ir.model,name:hotel_reservation.model_room_reservation_summary
-#, fuzzy
 msgid "Room reservation summary"
-msgstr " Reserva"
+msgstr "Resumen de reservación de habitación"
 
 #. module: hotel_reservation
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.view_hotel_reservation_form
-#, fuzzy
 msgid "Rooms"
-msgstr "Habitación No"
+msgstr "Habitaciones"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__message_has_sms_error
 msgid "SMS Delivery error"
-msgstr ""
+msgstr "Error de Entrega de SMS"
 
 #. module: hotel_reservation
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.quick_room_reservation_form_view
 msgid "Save"
-msgstr "Save"
+msgstr "Guardar"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__pricelist_id
 msgid "Scheme"
-msgstr ""
+msgstr "Esquema"
 
 #. module: hotel_reservation
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.view_hotel_reservation_form
-#, fuzzy
 msgid "Select Room"
-msgstr "Seleccionar habitación "
+msgstr "Seleccionar Habitación"
 
 #. module: hotel_reservation
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.view_hotel_reservation_form
-#, fuzzy
 msgid "Send Reservation Email"
-msgstr "Detalle de reserva"
+msgstr "Enviar Correo de Reserva"
 
 #. module: hotel_reservation
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.view_hotel_reservation_form
 msgid "Set to Draft"
-msgstr ""
+msgstr "Establecer como Borrador"
 
 #. module: hotel_reservation
 #: code:addons/hotel_reservation/models/hotel_reservation.py:0
 #, python-format
 msgid "Sorry, you can only delete the reservation when it's draft!"
-msgstr ""
+msgstr "Lo siento, sólo puede eliminar la reservación cuando está en borrador."
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation_wizard__date_start
 msgid "Start Date"
-msgstr "Fecha de inicio"
+msgstr "Fecha de Inicio"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__state
@@ -1157,12 +1114,12 @@ msgstr "Estado"
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_room_reservation_summary__summary_header
 msgid "Summary Header"
-msgstr "Summary Header"
+msgstr "Encabezado de Resumen"
 
 #. module: hotel_reservation
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.room_reservation_summary_form_view
 msgid "Summary Period"
-msgstr "Summary Period"
+msgstr "Período de Resumen"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,help:hotel_reservation.field_hotel_reservation__partner_order_id
@@ -1173,17 +1130,17 @@ msgstr "El nombre y dirección del contacto que solicitó el pedido o la cita"
 #. module: hotel_reservation
 #: model:ir.model.fields.selection,name:hotel_reservation.selection__hotel_room_reservation_line__state__unassigned
 msgid "Unassigned"
-msgstr "Unassigned"
+msgstr "No Asignado"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__message_unread
 msgid "Unread Messages"
-msgstr ""
+msgstr "Mensajes No Leídos"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__message_unread_counter
 msgid "Unread Messages Counter"
-msgstr ""
+msgstr "Contador de Mensajes No Leídos"
 
 #. module: hotel_reservation
 #: code:addons/hotel_reservation/models/hotel_room.py:0
@@ -1191,16 +1148,17 @@ msgstr ""
 msgid ""
 "User is not able to delete the room after the room in %s state in reservation"
 msgstr ""
+"El usuario no puede eliminar la habitación después de que la habitación esté en estado %s en la reserva"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__website_message_ids
 msgid "Website Messages"
-msgstr ""
+msgstr "Mensajes del Sitio Web"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,help:hotel_reservation.field_hotel_reservation__website_message_ids
 msgid "Website communication history"
-msgstr ""
+msgstr "Historial de comunicación del sitio web"
 
 #. module: hotel_reservation
 #: code:addons/hotel_reservation/models/hotel_reservation.py:0
@@ -1209,28 +1167,28 @@ msgid ""
 "You tried to Confirm Reservation with room those already reserved in this "
 "Reservation Period. Overlap Dates are %s"
 msgstr ""
+"Intentó confirmar una reserva con habitaciones que ya están reservadas en este "
+"período de reserva. Las fechas que se superponen son %s"
 
 #. module: hotel_reservation
 #: model:ir.model,name:hotel_reservation.model_hotel_folio
 msgid "hotel folio"
-msgstr ""
+msgstr "folio de hotel"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_quick_room_reservation__pricelist_id
-#, fuzzy
 msgid "pricelist"
-msgstr "Lista de precios"
+msgstr "lista de precios"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_room_reservation_line__status
-#, fuzzy
 msgid "state"
-msgstr "Estado"
+msgstr "estado"
 
 #. module: hotel_reservation
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.room_reservation_summary_form_view
 msgid "to"
-msgstr "to"
+msgstr "hasta"
 
 #~ msgid "hotel folio new"
 #~ msgstr "hotel folio new"

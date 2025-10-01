@@ -1,6 +1,8 @@
 # Copyright (C) 2024-TODAY Serpent Consulting Services Pvt. Ltd. (<http://www.serpentcs.com>).
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
+from datetime import timedelta
+
 from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
 
@@ -23,6 +25,7 @@ class QuickRoomReservation(models.TransientModel):
         "res.partner", "Delivery Address", required=True
     )
     adults = fields.Integer()
+    summary_id = fields.Many2one("room.reservation.summary", "Reservation Summary")
 
     @api.onchange("check_out", "check_in")
     def _on_change_check_out(self):
@@ -81,6 +84,8 @@ class QuickRoomReservation(models.TransientModel):
         if "room_id" in keys:
             roomid = self._context["room_id"]
             res.update({"room_id": int(roomid)})
+        if "summary_id" in keys:
+            res.update({"summary_id": self._context["summary_id"]})
         return res
 
     def room_reserve(self):
@@ -88,7 +93,7 @@ class QuickRoomReservation(models.TransientModel):
         This method create a new record for hotel.reservation
         -----------------------------------------------------
         @param self: The object pointer
-        @return: new record set for hotel reservation.
+        @return: action to reload the summary view or True.
         """
         hotel_res_obj = self.env["hotel.reservation"]
         for res in self:
@@ -115,4 +120,24 @@ class QuickRoomReservation(models.TransientModel):
                     ],
                 }
             )
-        return rec
+            # Automatically confirm the reservation
+            rec.confirmed_reservation()
+            
+            # Update the reservation summary if it exists
+            if res.summary_id:
+                # Update date_to to one minute more and refresh
+                new_date_to = res.summary_id.date_to + timedelta(minutes=1)
+                res.summary_id.write({'date_to': new_date_to})
+                # Trigger the onchange to refresh the summary
+                res.summary_id.get_room_summary()
+                
+                # Return action to reload the summary view
+                return {
+                    'type': 'ir.actions.act_window',
+                    'res_model': 'room.reservation.summary',
+                    'res_id': res.summary_id.id,
+                    'view_mode': 'form',
+                    'target': 'current',
+                    'context': self.env.context,
+                }
+        return {'type': 'ir.actions.act_window_close'}
