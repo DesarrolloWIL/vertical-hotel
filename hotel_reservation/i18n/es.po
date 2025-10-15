@@ -1330,3 +1330,15 @@ msgstr "hasta"
 
 #~ msgid "Reservation Details"
 #~ msgstr "Detalles de reserva"
+
+#. module: hotel_reservation
+#: code:addons/hotel_reservation/models/hotel_room.py:165
+#: code:addons/hotel_reservation/models/hotel_room.py:254
+msgid "Free"
+msgstr "Libre"
+
+#. module: hotel_reservation
+#: code:addons/hotel_reservation/models/hotel_room.py:242
+#: code:addons/hotel_reservation/models/hotel_room.py:175
+msgid "Reserved"
+msgstr "Reservado"

@@ -133,10 +133,22 @@ class RoomReservationSummary(models.Model):
         user_obj = self.env["res.users"]
         date_range_list = []
         main_header = []
-        summary_header_list = ["Rooms"]
+        summary_header_list = [_("Rooms")]
         if self.date_from and self.date_to:
             if self.date_from > self.date_to:
                 raise UserError(_("Checkout date should be greater than Checkin date."))
+            
+            # Diccionarios para traducir días y meses al español
+            days_es = {
+                'Mon': 'Lun', 'Tue': 'Mar', 'Wed': 'Mié', 'Thu': 'Jue',
+                'Fri': 'Vie', 'Sat': 'Sáb', 'Sun': 'Dom'
+            }
+            months_es = {
+                'Jan': 'Ene', 'Feb': 'Feb', 'Mar': 'Mar', 'Apr': 'Abr',
+                'May': 'May', 'Jun': 'Jun', 'Jul': 'Jul', 'Aug': 'Ago',
+                'Sep': 'Sep', 'Oct': 'Oct', 'Nov': 'Nov', 'Dec': 'Dic'
+            }
+            
             if self._context.get("tz", False):
                 timezone = pytz.timezone(self._context.get("tz", False))
             else:
@@ -151,14 +163,16 @@ class RoomReservationSummary(models.Model):
             )
             temp_date = d_frm_obj
             while temp_date <= d_to_obj:
-                val = ""
-                val = (
-                    str(temp_date.strftime("%a"))
-                    + " "
-                    + str(temp_date.strftime("%b"))
-                    + " "
-                    + str(temp_date.strftime("%d"))
-                )
+                # Obtener día y mes en inglés primero
+                day_eng = temp_date.strftime("%a")
+                month_eng = temp_date.strftime("%b")
+                day_num = temp_date.strftime("%d")
+                
+                # Traducir al español
+                day_es = days_es.get(day_eng, day_eng)
+                month_es = months_es.get(month_eng, month_eng)
+                
+                val = f"{day_es} {month_es} {day_num}"
                 summary_header_list.append(val)
                 date_range_list.append(temp_date.strftime(dt))
                 temp_date = temp_date + timedelta(days=1)
@@ -173,7 +187,7 @@ class RoomReservationSummary(models.Model):
                     for chk_date in date_range_list:
                         room_list_stats.append(
                             {
-                                "state": "Free",
+                                "state": _("Free"),
                                 "date": chk_date,
                                 "room_id": room.id,
                             }
@@ -222,7 +236,7 @@ class RoomReservationSummary(models.Model):
                                         ci = rlist.get("date") >= cidst
                                         co = rlist.get("date") <= codst
                                         rm = rlist.get("room_id") == rm_id
-                                        st = rlist.get("state") == "Reserved"
+                                        st = rlist.get("state") == _("Reserved")
                                         if ci and co and rm and st:
                                             count += 1
                                     if count - dur.days == 0:
@@ -268,7 +282,7 @@ class RoomReservationSummary(models.Model):
                         if reservline_ids or folio_resrv_ids:
                             room_list_stats.append(
                                 {
-                                    "state": "Reserved",
+                                    "state": _("Reserved"),
                                     "date": chk_date,
                                     "room_id": room.id,
                                     "is_draft": "No",
@@ -279,7 +293,7 @@ class RoomReservationSummary(models.Model):
                         else:
                             room_list_stats.append(
                                 {
-                                    "state": "Free",
+                                    "state": _("Free"),
                                     "date": chk_date,
                                     "room_id": room.id,
                                 }
