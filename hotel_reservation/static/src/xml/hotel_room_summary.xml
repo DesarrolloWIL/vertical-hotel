@@ -27,7 +27,7 @@
                                 <t t-esc="detail.name" />
                             </td>
                             <t t-foreach="detail.value" t-as="status" t-key="status_index">
-                                <t t-if="status.state == 'Free'">
+                                <t t-if="status.state_code == 'Free'">
                                     <td
                                         class="table_free"
                                         t-att-data="status.room_id"
@@ -39,7 +39,7 @@
                                     </td>
                                 </t>
                                 <t
-                                    t-if="status.state != 'Free' and status.is_draft == 'No'"
+                                    t-if="status.state_code != 'Free' and status.is_draft == 'No'"
                                 >
                                     <td
                                         class="table_reserved"

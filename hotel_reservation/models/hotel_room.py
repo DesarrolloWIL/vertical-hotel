@@ -134,6 +134,24 @@ class RoomReservationSummary(models.Model):
         date_range_list = []
         main_header = []
         summary_header_list = [_("Rooms")]
+        
+        # Constantes para estados (usamos inglés internamente para comparaciones)
+        STATE_FREE = "Free"
+        STATE_RESERVED = "Reserved"
+        
+        def get_state_info(is_free):
+            """Función auxiliar para obtener información del estado"""
+            if is_free:
+                return {
+                    "state": _("Free"),
+                    "state_code": STATE_FREE,
+                }
+            else:
+                return {
+                    "state": _("Reserved"),
+                    "state_code": STATE_RESERVED,
+                }
+        
         if self.date_from and self.date_to:
             if self.date_from > self.date_to:
                 raise UserError(_("Checkout date should be greater than Checkin date."))
@@ -185,9 +203,11 @@ class RoomReservationSummary(models.Model):
                 room_detail.update({"name": room.name or ""})
                 if not room.room_reservation_line_ids and not room.room_line_ids:
                     for chk_date in date_range_list:
+                        state_info = get_state_info(True)
                         room_list_stats.append(
                             {
-                                "state": _("Free"),
+                                "state": state_info["state"],
+                                "state_code": state_info["state_code"],
                                 "date": chk_date,
                                 "room_id": room.id,
                             }
@@ -236,7 +256,7 @@ class RoomReservationSummary(models.Model):
                                         ci = rlist.get("date") >= cidst
                                         co = rlist.get("date") <= codst
                                         rm = rlist.get("room_id") == rm_id
-                                        st = rlist.get("state") == _("Reserved")
+                                        st = rlist.get("state_code") == STATE_RESERVED
                                         if ci and co and rm and st:
                                             count += 1
                                     if count - dur.days == 0:
@@ -280,9 +300,11 @@ class RoomReservationSummary(models.Model):
                             ]
                         )
                         if reservline_ids or folio_resrv_ids:
+                            state_info = get_state_info(False)
                             room_list_stats.append(
                                 {
-                                    "state": _("Reserved"),
+                                    "state": state_info["state"],
+                                    "state_code": state_info["state_code"],
                                     "date": chk_date,
                                     "room_id": room.id,
                                     "is_draft": "No",
@@ -291,9 +313,11 @@ class RoomReservationSummary(models.Model):
                                 }
                             )
                         else:
+                            state_info = get_state_info(True)
                             room_list_stats.append(
                                 {
-                                    "state": _("Free"),
+                                    "state": state_info["state"],
+                                    "state_code": state_info["state_code"],
                                     "date": chk_date,
                                     "room_id": room.id,
                                 }
