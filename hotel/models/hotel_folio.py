@@ -26,6 +26,7 @@ class HotelFolio(models.Model):
     _name = "hotel.folio"
     _description = "hotel folio"
     _rec_name = "order_id"
+    _inherit = ["mail.thread", "mail.activity.mixin"]
 
     def _compute_display_name(self):
         res = []
@@ -65,12 +66,14 @@ class HotelFolio(models.Model):
         "Check In",
         required=True,
         default=_get_checkin_date,
+        tracking=True,
     )
     checkout_date = fields.Datetime(
         "Check Out",
         readonly=True,
         required=True,
         default=_get_checkout_date,
+        tracking=True,
     )
     room_line_ids = fields.One2many(
         "hotel.folio.line",
@@ -91,6 +94,7 @@ class HotelFolio(models.Model):
             ("picking", "On Checkout"),
         ],
         default="manual",
+        tracking=True,
         help="Hotel policy for payment that "
         "either the guest has to payment at "
         "booking time or check-in "
@@ -252,7 +256,12 @@ class HotelFolio(models.Model):
                 rooms = self.env["hotel.room"].search([("product_id", "=", product.id)])
                 rooms.write({"isroom": True, "status": "available"})
             rec.invoice_ids.button_cancel()
-            return rec.order_id.action_cancel()
+            result = rec.order_id.action_cancel()
+            rec.message_post(
+                body=_("Folio cancelled. All rooms have been released and invoices cancelled."),
+                message_type='notification'
+            )
+            return result
 
     def action_confirm(self):
         for order in self.order_id:
@@ -265,6 +274,12 @@ class HotelFolio(models.Model):
             config_parameter_obj = self.env["ir.config_parameter"]
             if config_parameter_obj.sudo().get_param("sale.auto_done_setting"):
                 self.order_id.action_done()
+        
+        # Mensaje informativo en el chatter
+        self.message_post(
+            body=_("Folio confirmed successfully. Sale order has been confirmed."),
+            message_type='notification'
+        )
 
     def action_cancel_draft(self):
         """
@@ -280,6 +295,12 @@ class HotelFolio(models.Model):
                 "state": "draft",
                 "invoice_lines": [(6, 0, [])],
             }
+        )
+        
+        # Mensaje informativo en el chatter
+        self.message_post(
+            body=_("Folio set back to draft status. Invoices have been reset."),
+            message_type='notification'
         )
 
 

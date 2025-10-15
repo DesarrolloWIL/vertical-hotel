@@ -14,7 +14,7 @@ class HotelReservation(models.Model):
     _rec_name = "reservation_no"
     _description = "Reservation"
     _order = "reservation_no desc"
-    _inherit = ["mail.thread"]
+    _inherit = ["mail.thread", "mail.activity.mixin"]
 
     def _compute_folio_count(self):
         for res in self:
@@ -43,6 +43,7 @@ class HotelReservation(models.Model):
         readonly=True,
         index=True,
         required=True,
+        tracking=True,
     )
     pricelist_id = fields.Many2one(
         "product.pricelist",
@@ -74,11 +75,13 @@ class HotelReservation(models.Model):
         "Expected-Date-Arrival",
         required=True,
         readonly=True,
+        tracking=True,
     )
     checkout = fields.Datetime(
         "Expected-Date-Departure",
         required=True,
         readonly=True,
+        tracking=True,
     )
     adults = fields.Integer(
         readonly=True,
@@ -104,6 +107,7 @@ class HotelReservation(models.Model):
         ],
         readonly=True,
         default="draft",
+        tracking=True,
     )
     folio_id = fields.Many2many(
         "hotel.folio",
@@ -309,6 +313,14 @@ class HotelReservation(models.Model):
                         }
                         room.write({"isroom": False, "status": "occupied"})
                     reservation_line_obj.create(vals)
+        
+        # Mensaje informativo en el chatter
+        for reservation in self:
+            if reservation.state == "confirm":
+                reservation.message_post(
+                    body=_("Reservation confirmed successfully. Rooms have been assigned and marked as occupied."),
+                    message_type='notification'
+                )
         return True
 
     def cancel_reservation(self):
@@ -318,6 +330,16 @@ class HotelReservation(models.Model):
         @param self: The object pointer
         @return: cancel record set for hotel room reservation line.
         """
+        # Verificar si hay folios con facturas confirmadas
+        for reservation in self:
+            if reservation.folio_id:
+                for folio in reservation.folio_id:
+                    if folio.invoice_ids.filtered(lambda inv: inv.state == 'posted'):
+                        raise ValidationError(
+                            _("Cannot cancel reservation %s because it has confirmed invoices. "
+                              "Please cancel the invoices first.") % reservation.reservation_no
+                        )
+        
         room_res_line_obj = self.env["hotel.room.reservation.line"]
         hotel_res_line_obj = self.env["hotel.reservation.line"]
         self.state = "cancel"
@@ -329,10 +351,31 @@ class HotelReservation(models.Model):
         reservation_lines = hotel_res_line_obj.search([("line_id", "in", self.ids)])
         for reservation_line in reservation_lines:
             reservation_line.reserve.write({"isroom": True, "status": "available"})
+        
+        # Cancelar folios relacionados
+        for reservation in self:
+            if reservation.folio_id:
+                for folio in reservation.folio_id:
+                    if folio.state not in ['cancel']:
+                        folio.action_cancel()
+                        folio.message_post(
+                            body=_("Folio cancelled automatically due to reservation cancellation."),
+                            message_type='notification'
+                        )
+        
+        # Mensaje informativo en el chatter
+        self.message_post(
+            body=_("Reservation cancelled. All rooms have been released and related folios have been cancelled."),
+            message_type='notification'
+        )
         return True
 
     def set_to_draft_reservation(self):
         self.update({"state": "draft"})
+        self.message_post(
+            body=_("Reservation set back to draft status for editing."),
+            message_type='notification'
+        )
 
     def action_send_reservation_mail(self):
         """
@@ -445,6 +488,12 @@ class HotelReservation(models.Model):
             for rm_line in folio.room_line_ids:
                 rm_line._onchange_product_id()
             self.write({"folio_id": [(6, 0, folio.ids)], "state": "done"})
+            
+            # Mensaje informativo en el chatter
+            self.message_post(
+                body=_("Folio %s created successfully from reservation. Reservation status changed to Done.") % folio.name,
+                message_type='notification'
+            )
         return True
 
     def _onchange_check_dates(

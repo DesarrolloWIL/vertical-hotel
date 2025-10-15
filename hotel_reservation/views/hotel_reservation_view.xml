@@ -31,7 +31,7 @@
                     <button
                         name="cancel_reservation"
                         string="Cancel Reservation"
-                        invisible="state in ['draft','confirm']"
+                        invisible="state in ['cancel']"
                         class="oe_highlight"
                         type="object"
                     />
@@ -45,19 +45,9 @@
                     <field name="state" widget="statusbar" />
                 </header>
                 <sheet>
-                    <div class="oe_button_box">
-                        <button
-                            name="open_folio_view"
-                            type="object"
-                            icon="fa-file-text-o"
-                            class="oe_stat_button"
-                            invisible="no_of_folio == '0'"
-                        >
-                            <field
-                                name="no_of_folio"
-                                widget="statinfo"
-                                string="Folio"
-                            />
+                    <div class="oe_button_box" name="button_box">
+                        <button name="open_folio_view" type="object" class="oe_stat_button" icon="fa-file-text-o" invisible="no_of_folio == 0">
+                            <field string="Folio" name="no_of_folio" widget="statinfo"/>
                         </button>
                     </div>
                     <label for='reservation_no' string="Reservation No" />
@@ -139,6 +129,11 @@
                         </page>
                     </notebook>
                 </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
             </form>
         </field>
     </record>
