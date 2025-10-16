@@ -24,8 +24,8 @@ class QuickRoomReservation(models.TransientModel):
     partner_shipping_id = fields.Many2one(
         "res.partner", "Delivery Address", required=True
     )
-    adults = fields.Integer()
-    children = fields.Integer()
+    adults = fields.Integer("Adults")
+    children = fields.Integer("Children")
     summary_id = fields.Many2one("room.reservation.summary", "Reservation Summary")
 
     @api.onchange("check_out", "check_in")

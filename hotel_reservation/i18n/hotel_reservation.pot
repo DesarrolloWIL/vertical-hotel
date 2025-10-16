@@ -336,6 +336,11 @@ msgid "Adults"
 msgstr ""
 
 #. module: hotel_reservation
+#: model:ir.model.fields,field_description:hotel_reservation.field_quick_room_reservation__children
+msgid "Children"
+msgstr ""
+
+#. module: hotel_reservation
 #: model:ir.model,name:hotel_reservation.model_hotel_reservation_wizard
 msgid "Allow to generate a reservation"
 msgstr ""

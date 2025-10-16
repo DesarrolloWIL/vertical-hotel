@@ -364,6 +364,11 @@ msgid "Adults"
 msgstr "Adultos"
 
 #. module: hotel_reservation
+#: model:ir.model.fields,field_description:hotel_reservation.field_quick_room_reservation__children
+msgid "Children"
+msgstr "Niños"
+
+#. module: hotel_reservation
 #: code:addons/hotel_reservation/models/hotel_reservation.py:0
 #, python-format
 msgid "Adults must be more than 0"
