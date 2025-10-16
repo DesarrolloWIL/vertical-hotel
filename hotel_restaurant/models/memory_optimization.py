@@ -49,18 +49,3 @@ class HotelMenucardTypeMemoryOptimization(models.Model):
             _logger.warning("Large limit requested for hotel.menucard.type search, capped at 200")
         
         return super().search(domain, offset, limit, order)
-
-
-class BaseModelMemoryOptimization(models.AbstractModel):
-    """Global memory optimization for large dataset operations"""
-    _name = "base.model.memory.optimization"
-    _description = "Memory optimization for large datasets"
-
-    @api.model
-    def _apply_memory_limits(self, limit):
-        """Apply reasonable memory limits based on model type"""
-        if limit is None:
-            return 200  # Default safe limit
-        elif limit > 1000:
-            return 1000  # Maximum safe limit
-        return limit
