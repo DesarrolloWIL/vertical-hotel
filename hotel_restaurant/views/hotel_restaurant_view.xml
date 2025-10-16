@@ -965,9 +965,9 @@
         <field name="name">Menucard Kanban</field>
         <field name="model">hotel.menucard</field>
         <field name="arch" type="xml">
-            <kanban>
+            <kanban limit="50">
                 <field name="id" />
-                <field name="image_1920" />
+                <field name="image_128" />
                 <field name="lst_price" />
                 <templates>
                     <t t-name="kanban-box">
@@ -975,7 +975,7 @@
                             <div class="o_kanban_image">
                                 <img
                                     alt="hotel menucard"
-                                    t-att-src="kanban_image('hotel.menucard', 'image_1920', record.id.raw_value)"
+                                    t-att-src="kanban_image('hotel.menucard', 'image_128', record.id.raw_value)"
                                 />
                             </div>
                             <div class="oe_kanban_details">
@@ -1017,6 +1017,7 @@
         <field name="context">{'default_available_in_pos':0}
         </field>
         <field name="search_view_id" ref="view_hotel_menucard_search_new" />
+        <field name="limit">100</field>
         <field name="help" type="html">
             <p class="oe_view_nocontent_create">
                 Click to Add Food Items

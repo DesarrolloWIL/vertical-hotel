@@ -133,7 +133,18 @@ class RoomReservationSummary(models.Model):
         user_obj = self.env["res.users"]
         date_range_list = []
         main_header = []
-        summary_header_list = [_("Rooms")]
+        
+        # Forzar el contexto de idioma para asegurar traducción correcta
+        lang = self.env.user.lang or self.env.context.get('lang', 'en_US')
+        with_context = self.with_context(lang=lang)
+        
+        # Traducción manual como respaldo
+        if lang.startswith('es'):
+            rooms_text = "Habitaciones"
+        else:
+            rooms_text = with_context._("Rooms")
+        
+        summary_header_list = [rooms_text]
         
         # Constantes para estados (usamos inglés internamente para comparaciones)
         STATE_FREE = "Free"
@@ -142,13 +153,21 @@ class RoomReservationSummary(models.Model):
         def get_state_info(is_free):
             """Función auxiliar para obtener información del estado"""
             if is_free:
+                if lang.startswith('es'):
+                    state_text = "Libre"
+                else:
+                    state_text = with_context._("Free")
                 return {
-                    "state": _("Free"),
+                    "state": state_text,
                     "state_code": STATE_FREE,
                 }
             else:
+                if lang.startswith('es'):
+                    state_text = "Reservado"
+                else:
+                    state_text = with_context._("Reserved")
                 return {
-                    "state": _("Reserved"),
+                    "state": state_text,
                     "state_code": STATE_RESERVED,
                 }
         
