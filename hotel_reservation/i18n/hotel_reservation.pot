@@ -1054,6 +1054,12 @@ msgid "Room reservation summary"
 msgstr ""
 
 #. module: hotel_reservation
+#: code:addons/hotel_reservation/models/hotel_room.py:0
+#, python-format
+msgid "Rooms"
+msgstr ""
+
+#. module: hotel_reservation
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.view_hotel_reservation_form
 msgid "Rooms"
 msgstr ""
