@@ -25,6 +25,7 @@ class QuickRoomReservation(models.TransientModel):
         "res.partner", "Delivery Address", required=True
     )
     adults = fields.Integer()
+    children = fields.Integer()
     summary_id = fields.Many2one("room.reservation.summary", "Reservation Summary")
 
     @api.onchange("check_out", "check_in")
@@ -108,6 +109,7 @@ class QuickRoomReservation(models.TransientModel):
                     "company_id": res.company_id.id,
                     "pricelist_id": res.pricelist_id.id,
                     "adults": res.adults,
+                    "children": res.children,
                     "reservation_line": [
                         (
                             0,

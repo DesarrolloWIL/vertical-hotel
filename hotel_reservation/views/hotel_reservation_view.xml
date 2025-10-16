@@ -371,6 +371,7 @@
                         <field name="partner_order_id" />
                         <field name="partner_shipping_id" />
                         <field name="adults" />
+                        <field name="children" />
                     </group>
                 </sheet>
                 <footer>
