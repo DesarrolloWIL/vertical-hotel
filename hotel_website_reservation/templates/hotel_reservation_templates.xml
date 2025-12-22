@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Hotel Reservation Templates for Email -->
+    <template id="hotel_reservation_email_template" name="Hotel Reservation Email Template">
+        <div style="margin: 0; padding: 0; font-family: Arial, sans-serif;">
+            <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f4f4f4; padding: 20px;">
+                <tr>
+                    <td align="center">
+                        <table width="600" cellpadding="20" cellspacing="0" style="background-color: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                            <tr>
+                                <td>
+                                    <h2 style="color: #333; margin-bottom: 20px;">Booking Confirmation</h2>
+                                    
+                                    <div style="background-color: #f8f9fa; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+                                        <h3 style="color: #495057; margin-top: 0;">Reservation Details</h3>
+                                        <table width="100%" cellpadding="5" cellspacing="0">
+                                            <tr>
+                                                <td width="150"><strong>Reservation #:</strong></td>
+                                                <td><t t-esc="object.reservation_no"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Room:</strong></td>
+                                                <td><t t-esc="object.room_id.name"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Check-in:</strong></td>
+                                                <td><t t-esc="object.checkin_date"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Check-out:</strong></td>
+                                                <td><t t-esc="object.checkout_date"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Guests:</strong></td>
+                                                <td><t t-esc="object.adults"/> Adults, <t t-esc="object.children"/> Children</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    
+                                    <div style="text-align: center; margin: 30px 0;">
+                                        <a href="/my/hotel_reservation/{object.id}" 
+                                           style="background-color: #007bff; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; display: inline-block;">
+                                            View Booking Details
+                                        </a>
+                                    </div>
+                                    
+                                    <p style="color: #666; margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px;">
+                                        Thank you for choosing our hotel. We look forward to welcoming you!
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </template>
+
+    <!-- Booking Success Page -->
+    <template id="booking_success_page" name="Booking Success">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure oe_empty">
+                <div class="container mt-5">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8 text-center">
+                            <div class="card shadow">
+                                <div class="card-body p-5">
+                                    <i class="fa fa-check-circle fa-5x text-success mb-4"></i>
+                                    <h1 class="text-success mb-3">Booking Confirmed!</h1>
+                                    <p class="lead mb-4">
+                                        Thank you for your reservation. Your booking has been successfully confirmed.
+                                    </p>
+                                    
+                                    <t t-if="reservation">
+                                        <div class="alert alert-info">
+                                            <h5>Reservation Details</h5>
+                                            <p><strong>Reservation Number:</strong> <span t-esc="reservation.reservation_no"/></p>
+                                            <p><strong>Room:</strong> <span t-esc="reservation.room_id.name"/></p>
+                                            <p><strong>Dates:</strong> <span t-esc="reservation.checkin_date"/> to <span t-esc="reservation.checkout_date"/></p>
+                                        </div>
+                                    </t>
+                                    
+                                    <div class="row mt-4">
+                                        <div class="col-md-6 mb-3">
+                                            <a href="/my/hotel_reservations" class="btn btn-primary btn-lg w-100">
+                                                View My Bookings
+                                            </a>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <a href="/hotel/rooms" class="btn btn-outline-primary btn-lg w-100">
+                                                Book Another Room
+                                            </a>
+                                        </div>
+                                    </div>
+                                    
+                                    <hr class="my-4"/>
+                                    <p class="text-muted">
+                                        A confirmation email has been sent to your email address with all the booking details.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <!-- Website Sale Integration Templates -->
+    <template id="website_sale_hotel_product_price" inherit_id="website_sale.product_price" name="Hotel Room Price Display">
+        <xpath expr="//div[hasclass('product_price')]" position="attributes">
+            <attribute name="t-if">not product.is_hotel_room</attribute>
+        </xpath>
+        
+        <xpath expr="//div[hasclass('product_price')]" position="after">
+            <div t-if="product.is_hotel_room" class="product_price hotel-room-price">
+                <h4 class="oe_price_h4">
+                    <span class="oe_price oe_price_current">
+                        <span t-esc="product.list_price" 
+                              t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                        <small class="text-muted">/night</small>
+                    </span>
+                </h4>
+                <t t-if="product.hotel_room_id">
+                    <p class="text-muted">
+                        <i class="fa fa-users"></i> Up to <span t-esc="product.hotel_room_id.capacity"/> guests
+                    </p>
+                    <p class="text-muted">
+                        <i class="fa fa-info-circle"></i> Advance payment: <span t-esc="product.hotel_room_id.booking_advance_percentage"/>%
+                    </p>
+                </t>
+            </div>
+        </xpath>
+    </template>
+
+    <!-- Hotel Room Product Template -->
+    <template id="hotel_room_product_template" name="Hotel Room Product Template">
+        <t t-call="website_sale.product">
+            <t t-set="additional_title">
+                <t t-if="product.hotel_room_id">
+                    <span class="badge bg-info">
+                        <i class="fa fa-bed"></i> Hotel Room
+                    </span>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

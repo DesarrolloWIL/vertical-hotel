@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Portal My Hotel Reservations -->
+    <template id="portal_my_hotel_reservations" name="My Hotel Reservations">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+            
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Hotel Reservations</t>
+            </t>
+            
+            <t t-if="not reservations">
+                <div class="alert alert-info text-center">
+                    <h4>No hotel reservations found</h4>
+                    <p>You haven't made any hotel reservations yet.</p>
+                    <a href="/hotel/rooms" class="btn btn-primary">Browse Rooms</a>
+                </div>
+            </t>
+            <t t-else="">
+                <div class="card">
+                    <div class="table-responsive">
+                        <table class="table table-hover o_portal_my_doc_table">
+                            <thead>
+                                <tr class="active">
+                                    <th>Reservation #</th>
+                                    <th>Room</th>
+                                    <th>Check-in</th>
+                                    <th>Check-out</th>
+                                    <th>Guests</th>
+                                    <th>Status</th>
+                                    <th>Payment</th>
+                                    <th>Total</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="reservations" t-as="reservation">
+                                    <tr>
+                                        <td>
+                                            <a t-att-href="'/my/hotel_reservation/%s' % reservation.id">
+                                                <t t-esc="reservation.reservation_no"/>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <t t-esc="reservation.room_id.name"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="reservation.checkin_date"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="reservation.checkout_date"/>
+                                        </td>
+                                        <td>
+                                            <t t-esc="reservation.adults + reservation.children"/>
+                                        </td>
+                                        <td>
+                                            <span t-att-class="'badge ' + ('bg-success' if reservation.state == 'done' else 'bg-warning' if reservation.state == 'confirm' else 'bg-secondary')">
+                                                <t t-esc="dict(reservation._fields['state'].selection)[reservation.state]"/>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span t-att-class="'badge ' + ('bg-success' if reservation.payment_status == 'paid' else 'bg-warning' if reservation.payment_status == 'partial' else 'bg-danger')">
+                                                <t t-esc="dict(reservation._fields['payment_status'].selection)[reservation.payment_status]"/>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span t-field="reservation.to_invoice_amount_total" 
+                                                  t-options='{"widget": "monetary", "display_currency": reservation.pricelist_id.currency_id}'/>
+                                        </td>
+                                        <td class="text-end">
+                                            <a t-att-href="'/my/hotel_reservation/%s' % reservation.id" 
+                                               class="btn btn-sm btn-outline-primary">
+                                                <i class="fa fa-eye"></i> View
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <!-- Portal Hotel Reservation Detail -->
+    <template id="portal_hotel_reservation_detail" name="Hotel Reservation Detail">
+        <t t-call="portal.portal_layout">
+            <t t-call="portal.portal_record_layout">
+                <t t-set="card_header">
+                    <h5 class="mb-0">
+                        <span>Hotel Reservation</span>
+                        <span t-field="reservation.reservation_no" class="text-muted"/>
+                        <span t-att-class="'badge ms-2 ' + ('bg-success' if reservation.state == 'done' else 'bg-warning' if reservation.state == 'confirm' else 'bg-secondary')">
+                            <t t-esc="dict(reservation._fields['state'].selection)[reservation.state]"/>
+                        </span>
+                    </h5>
+                </t>
+                
+                <t t-set="card_body">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <!-- Reservation Details -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h6 class="mb-0">Reservation Details</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <strong>Room:</strong> <span t-field="reservation.room_id.name"/><br/>
+                                            <strong>Room Type:</strong> <span t-field="reservation.room_id.room_type_id.name"/><br/>
+                                            <strong>Check-in:</strong> <span t-field="reservation.checkin_date"/><br/>
+                                            <strong>Check-out:</strong> <span t-field="reservation.checkout_date"/><br/>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <strong>Adults:</strong> <span t-field="reservation.adults"/><br/>
+                                            <strong>Children:</strong> <span t-field="reservation.children"/><br/>
+                                            <strong>Total Guests:</strong> <span t-esc="reservation.adults + reservation.children"/><br/>
+                                            <strong>Nights:</strong> <span t-esc="(reservation.checkout_date - reservation.checkin_date).days"/><br/>
+                                        </div>
+                                    </div>
+                                    
+                                    <t t-if="reservation.special_requests">
+                                        <hr/>
+                                        <strong>Special Requests:</strong><br/>
+                                        <p t-field="reservation.special_requests"/>
+                                    </t>
+                                </div>
+                            </div>
+                            
+                            <!-- Payment Information -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h6 class="mb-0">Payment Information</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <strong>Payment Status:</strong>
+                                            <span t-att-class="'badge ms-2 ' + ('bg-success' if reservation.payment_status == 'paid' else 'bg-warning' if reservation.payment_status == 'partial' else 'bg-danger')">
+                                                <t t-esc="dict(reservation._fields['payment_status'].selection)[reservation.payment_status]"/>
+                                            </span><br/>
+                                            <strong>Total Amount:</strong> 
+                                            <span t-field="reservation.to_invoice_amount_total" 
+                                                  t-options='{"widget": "monetary", "display_currency": reservation.pricelist_id.currency_id}'/><br/>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <t t-if="reservation.advance_payment_amount">
+                                                <strong>Advance Payment:</strong> 
+                                                <span t-field="reservation.advance_payment_amount" 
+                                                      t-options='{"widget": "monetary", "display_currency": reservation.pricelist_id.currency_id}'/><br/>
+                                            </t>
+                                            <t t-if="reservation.sale_order_id">
+                                                <strong>Sale Order:</strong> 
+                                                <a t-att-href="'/my/orders/%s' % reservation.sale_order_id.id">
+                                                    <span t-field="reservation.sale_order_id.name"/>
+                                                </a><br/>
+                                            </t>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-4">
+                            <!-- Room Information -->
+                            <div class="card mb-4">
+                                <t t-if="reservation.room_id.website_image_ids">
+                                    <t t-set="main_image" t-value="reservation.room_id.website_image_ids.filtered('is_main')[:1] or reservation.room_id.website_image_ids[:1]"/>
+                                    <img t-att-src="'/web/image/hotel.room.image/%s/image' % main_image.id" 
+                                         class="card-img-top" t-att-alt="reservation.room_id.name"/>
+                                </t>
+                                
+                                <div class="card-body">
+                                    <h6 class="card-title" t-field="reservation.room_id.name"/>
+                                    <p class="card-text">
+                                        <small class="text-muted">
+                                            Capacity: <t t-esc="reservation.room_id.capacity"/> guests<br/>
+                                            Type: <span t-field="reservation.room_id.room_type_id.name"/>
+                                        </small>
+                                    </p>
+                                    
+                                    <!-- Actions -->
+                                    <t t-if="reservation.state in ['draft', 'confirm']">
+                                        <form method="post" t-att-action="'/my/hotel_reservation/%s/cancel' % reservation.id" 
+                                              onsubmit="return confirm('Are you sure you want to cancel this reservation?');">
+                                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                            <button type="submit" class="btn btn-outline-danger btn-sm">
+                                                <i class="fa fa-times"></i> Cancel Reservation
+                                            </button>
+                                        </form>
+                                    </t>
+                                </div>
+                            </div>
+                            
+                            <!-- Contact Information -->
+                            <div class="card">
+                                <div class="card-header">
+                                    <h6 class="mb-0">Need Help?</h6>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        <small>
+                                            If you have any questions about your reservation, 
+                                            please contact our support team.
+                                        </small>
+                                    </p>
+                                    <a href="/contactus" class="btn btn-outline-primary btn-sm">Contact Us</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <!-- Add Hotel Reservations to Portal Menu -->
+    <template id="portal_my_home_hotel" name="Portal My Home: Hotel Reservations" inherit_id="portal.portal_my_home" priority="50">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Hotel Reservations</t>
+                <t t-set="url" t-value="'/my/hotel_reservations'"/>
+                <t t-set="placeholder_count" t-value="'hotel_reservation_count'"/>
+            </t>
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Hotel Reservation Form View Extension for Website -->
+    <record id="view_hotel_reservation_form_website" model="ir.ui.view">
+        <field name="name">hotel.reservation.form.website</field>
+        <field name="model">hotel.reservation</field>
+        <field name="inherit_id" ref="hotel_reservation.hotel_reservation_view_form"/>
+        <field name="arch" type="xml">
+            <field name="state" position="after">
+                <field name="website_booking" readonly="1"/>
+                <field name="payment_status"/>
+            </field>
+            
+            <notebook position="inside">
+                <page string="Website Booking" name="website_booking" attrs="{'invisible': [('website_booking', '=', False)]}">
+                    <group>
+                        <group string="Website Information">
+                            <field name="website_confirmation_sent" readonly="1"/>
+                            <field name="advance_payment_amount" readonly="1"/>
+                            <field name="advance_payment_percentage" readonly="1"/>
+                        </group>
+                        <group string="Related Records">
+                            <field name="sale_order_id" readonly="1"/>
+                        </group>
+                    </group>
+                    
+                    <group string="Actions" attrs="{'invisible': [('website_booking', '=', False)]}">
+                        <button name="send_website_confirmation" 
+                                string="Send Confirmation Email" 
+                                type="object" 
+                                class="btn-primary"
+                                attrs="{'invisible': [('website_confirmation_sent', '=', True)]}"/>
+                        <button name="action_create_sale_order" 
+                                string="Create Sale Order" 
+                                type="object" 
+                                class="btn-secondary"
+                                attrs="{'invisible': [('sale_order_id', '!=', False)]}"/>
+                    </group>
+                </page>
+            </notebook>
+        </field>
+    </record>
+
+    <!-- Hotel Reservation Tree View Extension -->
+    <record id="view_hotel_reservation_tree_website" model="ir.ui.view">
+        <field name="name">hotel.reservation.tree.website</field>
+        <field name="model">hotel.reservation</field>
+        <field name="inherit_id" ref="hotel_reservation.hotel_reservation_view_tree"/>
+        <field name="arch" type="xml">
+            <field name="state" position="after">
+                <field name="website_booking"/>
+                <field name="payment_status"/>
+            </field>
+        </field>
+    </record>
+
+    <!-- Website Reservations Filter -->
+    <record id="view_hotel_reservation_search_website" model="ir.ui.view">
+        <field name="name">hotel.reservation.search.website</field>
+        <field name="model">hotel.reservation</field>
+        <field name="inherit_id" ref="hotel_reservation.hotel_reservation_view_search"/>
+        <field name="arch" type="xml">
+            <filter name="state" position="after">
+                <filter string="Website Bookings" name="website_bookings" domain="[('website_booking', '=', True)]"/>
+                <filter string="Payment Pending" name="payment_pending" domain="[('payment_status', '=', 'pending')]"/>
+                <filter string="Paid" name="payment_paid" domain="[('payment_status', '=', 'paid')]"/>
+            </filter>
+        </field>
+    </record>
+
+    <!-- Website Bookings Action -->
+    <record id="action_hotel_reservation_website" model="ir.actions.act_window">
+        <field name="name">Website Bookings</field>
+        <field name="res_model">hotel.reservation</field>
+        <field name="view_mode">tree,form,calendar,graph</field>
+        <field name="domain">[('website_booking', '=', True)]</field>
+        <field name="context">{'search_default_website_bookings': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No website bookings found
+            </p>
+            <p>
+                Website bookings will appear here when customers make reservations through your website.
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu Item for Website Bookings -->
+    <menuitem id="menu_hotel_reservation_website"
+              name="Website Bookings"
+              parent="hotel_reservation.hotel_reservation_menu"
+              action="action_hotel_reservation_website"
+              sequence="5"/>
+</odoo>

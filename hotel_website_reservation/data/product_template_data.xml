@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Product Category for Hotel Rooms -->
+    <record id="product_category_hotel_rooms" model="product.category">
+        <field name="name">Hotel Rooms</field>
+        <field name="parent_id" ref="product.product_category_all"/>
+    </record>
+
+    <!-- Product Template for Hotel Room (Generic) -->
+    <record id="product_template_hotel_room_generic" model="product.template">
+        <field name="name">Hotel Room Booking</field>
+        <field name="categ_id" ref="product_category_hotel_rooms"/>
+        <field name="type">service</field>
+        <field name="list_price">100.0</field>
+        <field name="sale_ok">True</field>
+        <field name="purchase_ok">False</field>
+        <field name="is_hotel_room">True</field>
+        <field name="website_published">True</field>
+        <field name="description_sale">Hotel room accommodation service</field>
+    </record>
+
+    <!-- Email Template for Hotel Booking Confirmation -->
+    <record id="email_template_website_booking_confirmation" model="mail.template">
+        <field name="name">Hotel Booking Confirmation</field>
+        <field name="model_id" ref="hotel_reservation.model_hotel_reservation"/>
+        <field name="subject">Hotel Booking Confirmation - {{ object.reservation_no }}</field>
+        <field name="email_from">{{ object.company_id.email or user.email }}</field>
+        <field name="email_to">{{ object.partner_id.email }}</field>
+        <field name="description">Hotel booking confirmation email template</field>
+        <field name="body_html" type="xml">
+            <div style="margin: 0px; padding: 0px; font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 13px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255);">
+                <table border="0" cellpadding="0" cellspacing="0" style="padding-top: 16px; background-color: #F1F1F1; font-family: Verdana, Arial, sans-serif; color: #454748; width: 100%; border-collapse: separate;">
+                    <tr>
+                        <td align="center">
+                            <table border="0" cellpadding="0" cellspacing="0" width="590" style="padding: 16px; background-color: white; color: #454748; border-collapse: separate;">
+                                <tbody>
+                                    <!-- Header -->
+                                    <tr>
+                                        <td align="center" style="min-width: 590px;">
+                                            <table border="0" cellpadding="0" cellspacing="0" width="590" style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse: separate;">
+                                                <tr>
+                                                    <td valign="middle">
+                                                        <span style="font-size: 20px; font-weight: bold;">
+                                                            Hotel Booking Confirmation
+                                                        </span>
+                                                    </td>
+                                                    <td valign="middle" align="right">
+                                                        <img style="padding: 0px; margin: 0px; height: auto; width: 80px;" src="/logo.png" alt="${object.company_id.name}"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2" style="text-align: center;">
+                                                        <hr width="100%" style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 16px 0px;"/>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <!-- Content -->
+                                    <tr>
+                                        <td align="center" style="min-width: 590px;">
+                                            <table border="0" cellpadding="0" cellspacing="0" width="590" style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse: separate;">
+                                                <tr>
+                                                    <td valign="top" style="font-size: 13px;">
+                                                        <div>
+                                                            Dear ${object.partner_id.name},<br/><br/>
+                                                            
+                                                            Thank you for your hotel booking! We are pleased to confirm your reservation.
+                                                            <br/><br/>
+                                                            
+                                                            <strong>Booking Details:</strong><br/>
+                                                            <ul>
+                                                                <li><strong>Reservation Number:</strong> ${object.reservation_no}</li>
+                                                                <li><strong>Room:</strong> ${object.room_id.name}</li>
+                                                                <li><strong>Room Type:</strong> ${object.room_id.room_type_id.name}</li>
+                                                                <li><strong>Check-in Date:</strong> ${object.checkin_date}</li>
+                                                                <li><strong>Check-out Date:</strong> ${object.checkout_date}</li>
+                                                                <li><strong>Guests:</strong> ${object.adults} Adults, ${object.children} Children</li>
+                                                                <li><strong>Total Amount:</strong> ${object.to_invoice_amount_total} ${object.pricelist_id.currency_id.symbol}</li>
+                                                            </ul>
+                                                            
+                                                            % if object.special_requests:
+                                                            <strong>Special Requests:</strong><br/>
+                                                            ${object.special_requests}<br/><br/>
+                                                            % endif
+                                                            
+                                                            <strong>Payment Status:</strong> ${dict(object._fields['payment_status'].selection)[object.payment_status]}<br/><br/>
+                                                            
+                                                            You can view and manage your booking by logging into your account on our website.<br/><br/>
+                                                            
+                                                            We look forward to welcoming you!<br/><br/>
+                                                            
+                                                            Best regards,<br/>
+                                                            The Hotel Team
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="text-align: center;">
+                                                        <hr width="100%" style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 16px 0px;"/>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <!-- Footer -->
+                                    <tr>
+                                        <td align="center" style="min-width: 590px;">
+                                            <table border="0" cellpadding="0" cellspacing="0" width="590" style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse: separate;">
+                                                <tr>
+                                                    <td valign="middle" align="left">
+                                                        <span style="font-size: 11px; color: #5B5B5B;">
+                                                            ${object.company_id.name}
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </field>
+    </record>
+</odoo>

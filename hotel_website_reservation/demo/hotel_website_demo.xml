@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Demo Room Types -->
+    <record id="room_type_standard" model="hotel.room.type">
+        <field name="name">Standard Room</field>
+        <field name="room_amenities" eval="[(6, 0, [ref('hotel.hotel_room_amenities_0'), ref('hotel.hotel_room_amenities_1')])]"/>
+    </record>
+
+    <record id="room_type_deluxe" model="hotel.room.type">
+        <field name="name">Deluxe Room</field>
+        <field name="room_amenities" eval="[(6, 0, [ref('hotel.hotel_room_amenities_0'), ref('hotel.hotel_room_amenities_1'), ref('hotel.hotel_room_amenities_2')])]"/>
+    </record>
+
+    <record id="room_type_suite" model="hotel.room.type">
+        <field name="name">Suite</field>
+        <field name="room_amenities" eval="[(6, 0, [ref('hotel.hotel_room_amenities_0'), ref('hotel.hotel_room_amenities_1'), ref('hotel.hotel_room_amenities_2'), ref('hotel.hotel_room_amenities_3')])]"/>
+    </record>
+
+    <!-- Demo Hotel Rooms with Website Configuration -->
+    <record id="demo_hotel_room_101" model="hotel.room">
+        <field name="name">Room 101</field>
+        <field name="room_type_id" ref="room_type_standard"/>
+        <field name="capacity">2</field>
+        <field name="list_price">120.00</field>
+        <field name="website_published">True</field>
+        <field name="website_description">
+            <![CDATA[
+            <p>Comfortable standard room with modern amenities. Perfect for couples or business travelers.</p>
+            <ul>
+                <li>Queen size bed</li>
+                <li>Private bathroom</li>
+                <li>Free WiFi</li>
+                <li>Air conditioning</li>
+                <li>Work desk</li>
+            </ul>
+            ]]>
+        </field>
+        <field name="booking_advance_percentage">30.0</field>
+        <field name="min_stay_nights">1</field>
+        <field name="max_stay_nights">14</field>
+    </record>
+
+    <record id="demo_hotel_room_102" model="hotel.room">
+        <field name="name">Room 102</field>
+        <field name="room_type_id" ref="room_type_deluxe"/>
+        <field name="capacity">3</field>
+        <field name="list_price">180.00</field>
+        <field name="website_published">True</field>
+        <field name="website_description">
+            <![CDATA[
+            <p>Spacious deluxe room with premium furnishings and city view.</p>
+            <ul>
+                <li>King size bed + sofa bed</li>
+                <li>Private bathroom with bathtub</li>
+                <li>Free WiFi</li>
+                <li>Air conditioning</li>
+                <li>Mini bar</li>
+                <li>City view</li>
+            </ul>
+            ]]>
+        </field>
+        <field name="booking_advance_percentage">40.0</field>
+        <field name="min_stay_nights">1</field>
+        <field name="max_stay_nights">21</field>
+    </record>
+
+    <record id="demo_hotel_room_201" model="hotel.room">
+        <field name="name">Executive Suite 201</field>
+        <field name="room_type_id" ref="room_type_suite"/>
+        <field name="capacity">4</field>
+        <field name="list_price">350.00</field>
+        <field name="website_published">True</field>
+        <field name="website_description">
+            <![CDATA[
+            <p>Luxurious executive suite with separate living area and premium amenities.</p>
+            <ul>
+                <li>King size bed + living room with sofa bed</li>
+                <li>2 bathrooms with jacuzzi</li>
+                <li>Free WiFi</li>
+                <li>Air conditioning</li>
+                <li>Full mini bar</li>
+                <li>Ocean view</li>
+                <li>Executive lounge access</li>
+                <li>24/7 room service</li>
+            </ul>
+            ]]>
+        </field>
+        <field name="booking_advance_percentage">50.0</field>
+        <field name="min_stay_nights">2</field>
+        <field name="max_stay_nights">30</field>
+    </record>
+
+    <!-- Demo Room Images -->
+    <record id="demo_room_image_101_1" model="hotel.room.image">
+        <field name="name">Room 101 - Main View</field>
+        <field name="room_id" ref="demo_hotel_room_101"/>
+        <field name="sequence">1</field>
+        <field name="is_main">True</field>
+        <!-- Note: In a real implementation, you would add actual image data here -->
+    </record>
+
+    <record id="demo_room_image_102_1" model="hotel.room.image">
+        <field name="name">Room 102 - Main View</field>
+        <field name="room_id" ref="demo_hotel_room_102"/>
+        <field name="sequence">1</field>
+        <field name="is_main">True</field>
+    </record>
+
+    <record id="demo_room_image_201_1" model="hotel.room.image">
+        <field name="name">Suite 201 - Living Area</field>
+        <field name="room_id" ref="demo_hotel_room_201"/>
+        <field name="sequence">1</field>
+        <field name="is_main">True</field>
+    </record>
+
+    <!-- Link Products to Rooms -->
+    <record id="product_room_101" model="product.template">
+        <field name="name">Hotel Room 101</field>
+        <field name="categ_id" ref="product_category_hotel_rooms"/>
+        <field name="type">service</field>
+        <field name="list_price">120.00</field>
+        <field name="sale_ok">True</field>
+        <field name="purchase_ok">False</field>
+        <field name="is_hotel_room">True</field>
+        <field name="hotel_room_id" ref="demo_hotel_room_101"/>
+        <field name="website_published">True</field>
+        <field name="description_sale">Standard hotel room accommodation</field>
+    </record>
+
+    <record id="product_room_102" model="product.template">
+        <field name="name">Hotel Room 102</field>
+        <field name="categ_id" ref="product_category_hotel_rooms"/>
+        <field name="type">service</field>
+        <field name="list_price">180.00</field>
+        <field name="sale_ok">True</field>
+        <field name="purchase_ok">False</field>
+        <field name="is_hotel_room">True</field>
+        <field name="hotel_room_id" ref="demo_hotel_room_102"/>
+        <field name="website_published">True</field>
+        <field name="description_sale">Deluxe hotel room accommodation</field>
+    </record>
+
+    <record id="product_room_201" model="product.template">
+        <field name="name">Executive Suite 201</field>
+        <field name="categ_id" ref="product_category_hotel_rooms"/>
+        <field name="type">service</field>
+        <field name="list_price">350.00</field>
+        <field name="sale_ok">True</field>
+        <field name="purchase_ok">False</field>
+        <field name="is_hotel_room">True</field>
+        <field name="hotel_room_id" ref="demo_hotel_room_201"/>
+        <field name="website_published">True</field>
+        <field name="description_sale">Executive suite accommodation</field>
+    </record>
+
+    <!-- Update rooms to link to products -->
+    <record id="demo_hotel_room_101" model="hotel.room">
+        <field name="product_id" ref="product_room_101"/>
+    </record>
+
+    <record id="demo_hotel_room_102" model="hotel.room">
+        <field name="product_id" ref="product_room_102"/>
+    </record>
+
+    <record id="demo_hotel_room_201" model="hotel.room">
+        <field name="product_id" ref="product_room_201"/>
+    </record>
+
+    <!-- Demo Customer -->
+    <record id="demo_customer_hotel" model="res.partner">
+        <field name="name">John Doe</field>
+        <field name="email">john.doe@example.com</field>
+        <field name="phone">+1-555-123-4567</field>
+        <field name="is_company">False</field>
+        <field name="customer_rank">1</field>
+    </record>
+
+    <!-- Demo Reservation -->
+    <record id="demo_hotel_reservation_001" model="hotel.reservation">
+        <field name="partner_id" ref="demo_customer_hotel"/>
+        <field name="room_id" ref="demo_hotel_room_101"/>
+        <field name="checkin_date" eval="(DateTime.now() + timedelta(days=7)).strftime('%Y-%m-%d')"/>
+        <field name="checkout_date" eval="(DateTime.now() + timedelta(days=10)).strftime('%Y-%m-%d')"/>
+        <field name="adults">2</field>
+        <field name="children">0</field>
+        <field name="website_booking">True</field>
+        <field name="state">confirm</field>
+        <field name="payment_status">paid</field>
+        <field name="special_requests">Late check-in requested (after 8 PM)</field>
+    </record>
+</odoo>

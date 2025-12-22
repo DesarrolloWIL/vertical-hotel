@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hotel-website-reservation"
+version = "17.0.1.0.0"
+description = "Online Hotel Room Reservations with Payment Integration"
+authors = [
+    {name = "Serpent Consulting Services Pvt. Ltd."},
+    {name = "Odoo Community Association (OCA)"}
+]
+license = {text = "AGPL-3"}
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Web Environment",
+    "Framework :: Odoo",
+    "Framework :: Odoo :: 17.0",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: GNU Affero General Public License v3",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Topic :: Office/Business :: Financial :: Accounting",
+]
+dependencies = [
+    "odoo>=17.0dev,<17.1dev",
+]
+
+[project.urls]
+Homepage = "https://github.com/OCA/vertical-hotel"
+Repository = "https://github.com/OCA/vertical-hotel"

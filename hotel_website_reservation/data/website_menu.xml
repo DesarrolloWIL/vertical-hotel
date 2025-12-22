@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Website Menu for Hotel -->
+    <record id="website_menu_hotel" model="website.menu">
+        <field name="name">Hotel</field>
+        <field name="url">/hotel</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence">50</field>
+        <field name="website_id" ref="website.default_website"/>
+    </record>
+
+    <!-- Website Menu for Rooms -->
+    <record id="website_menu_hotel_rooms" model="website.menu">
+        <field name="name">Rooms</field>
+        <field name="url">/hotel/rooms</field>
+        <field name="parent_id" ref="website_menu_hotel"/>
+        <field name="sequence">10</field>
+        <field name="website_id" ref="website.default_website"/>
+    </record>
+
+    <!-- Hotel Website Page -->
+    <record id="hotel_website_page" model="website.page">
+        <field name="name">Hotel</field>
+        <field name="type">qweb</field>
+        <field name="url">/hotel</field>
+        <field name="website_published">True</field>
+        <field name="key">hotel_website_reservation.hotel_rooms_page</field>
+        <field name="arch" type="xml">
+            <t name="Hotel Rooms" t-name="hotel_website_reservation.hotel_rooms_page">
+                <t t-call="website.layout">
+                    <div class="oe_structure">
+                        <section class="container mt-5">
+                            <div class="row">
+                                <div class="col-lg-12 text-center">
+                                    <h1>Welcome to Our Hotel</h1>
+                                    <p class="lead">Discover comfort and luxury in our premium accommodations</p>
+                                    <a href="/hotel/rooms" class="btn btn-primary btn-lg">View Our Rooms</a>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </t>
+            </t>
+        </field>
+    </record>
+</odoo>
