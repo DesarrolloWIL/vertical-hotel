@@ -49,6 +49,19 @@
                     />
                 </header>
                 <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button
+                            name="action_view_sale_order"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="fa-file-text-o"
+                            invisible="not order_id">
+                            <field name="order_id" invisible="1"/>
+                            <div class="o_stat_info">
+                                <span class="o_stat_text">Sale Order</span>
+                            </div>
+                        </button>
+                    </div>
                     <label for="name" string="Folio Number" />
                     <h1>
                         <field name="name" colspan="4" readonly="1" />

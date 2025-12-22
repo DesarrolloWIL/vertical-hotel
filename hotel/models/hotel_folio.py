@@ -108,6 +108,18 @@ class HotelFolio(models.Model):
     hotel_invoice_id = fields.Many2one("account.move", "Invoice", copy=False)
     duration_dummy = fields.Float()
 
+    def action_view_sale_order(self):
+        """Open the related sale order."""
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': _('Sale Order'),
+            'res_model': 'sale.order',
+            'view_mode': 'form',
+            'res_id': self.order_id.id,
+            'target': 'current',
+        }
+
     @api.constrains("room_line_ids")
     def _check_duplicate_folio_room_line(self):
         """
