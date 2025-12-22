@@ -453,13 +453,17 @@ class HotelFolioLine(models.Model):
             date=self.folio_id.date_order,
             uom=self.product_uom.id,
         )
-        final_price, rule_id = self.folio_id.pricelist_id.with_context(
-            **product_context
-        )._get_product_price_rule(
-            self.product_id,
-            self.product_uom_qty or 1.0,
-            self.folio_id.partner_id,
-        )
+        try:
+            final_price, rule_id = self.folio_id.pricelist_id.with_context(
+                **product_context
+            )._get_product_price_rule(
+                self.product_id,
+                self.product_uom_qty or 1.0,
+                self.folio_id.partner_id,
+            )
+        except TypeError:
+            # Currency rate not configured - fallback to product list price
+            return product.lst_price
         base_price, currency_id = self.with_context(
             **product_context
         )._get_real_price_currency(
@@ -470,12 +474,16 @@ class HotelFolioLine(models.Model):
             self.folio_id.pricelist_id.id,
         )
         if currency_id != self.folio_id.pricelist_id.currency_id.id:
-            base_price = (
-                self.env["res.currency"]
-                .browse(currency_id)
-                .with_context(**product_context)
-                .compute(base_price, self.folio_id.pricelist_id.currency_id)
-            )
+            try:
+                base_price = (
+                    self.env["res.currency"]
+                    .browse(currency_id)
+                    .with_context(**product_context)
+                    .compute(base_price, self.folio_id.pricelist_id.currency_id)
+                )
+            except TypeError:
+                # Currency rate not configured - use base_price without conversion
+                pass
         # negative discounts (= surcharge) are included in the display price
         return max(base_price, final_price)
 
@@ -727,13 +735,17 @@ class HotelServiceLine(models.Model):
             date=self.folio_id.date_order,
             uom=self.product_uom.id,
         )
-        final_price, rule_id = self.folio_id.pricelist_id.with_context(
-            **product_context
-        )._get_product_price_rule(
-            self.product_id,
-            self.product_uom_qty or 1.0,
-            self.folio_id.partner_id,
-        )
+        try:
+            final_price, rule_id = self.folio_id.pricelist_id.with_context(
+                **product_context
+            )._get_product_price_rule(
+                self.product_id,
+                self.product_uom_qty or 1.0,
+                self.folio_id.partner_id,
+            )
+        except TypeError:
+            # Currency rate not configured - fallback to product list price
+            return product.lst_price
         base_price, currency_id = self.with_context(
             **product_context
         )._get_real_price_currency(
@@ -744,12 +756,16 @@ class HotelServiceLine(models.Model):
             self.folio_id.pricelist_id.id,
         )
         if currency_id != self.folio_id.pricelist_id.currency_id.id:
-            base_price = (
-                self.env["res.currency"]
-                .browse(currency_id)
-                .with_context(**product_context)
-                .compute(base_price, self.folio_id.pricelist_id.currency_id)
-            )
+            try:
+                base_price = (
+                    self.env["res.currency"]
+                    .browse(currency_id)
+                    .with_context(**product_context)
+                    .compute(base_price, self.folio_id.pricelist_id.currency_id)
+                )
+            except TypeError:
+                # Currency rate not configured - use base_price without conversion
+                pass
         # negative discounts (= surcharge) are included in the display price
         return max(base_price, final_price)
 
